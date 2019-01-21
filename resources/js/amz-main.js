@@ -340,6 +340,11 @@ if (typeof(amz$) !== 'undefined' && amz$.fn.on) {
                 alert(amz$('#gtc-accept').data('error'));
                 return;
             }
+            if (amz$('#extraCheck').length && !amz$('#extraCheck').is(':checked')) {
+                e.preventDefault();
+                alert(amz$("#gtc-accept").data("error"));
+                return;
+            }
 
             var $link = amz$(this);
             $link.css({opacity: 0.5, cursor: 'default'});

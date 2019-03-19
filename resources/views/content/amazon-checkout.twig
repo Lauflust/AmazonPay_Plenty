@@ -1,5 +1,4 @@
 {% extends getPartial('page-design') %}
-{% import "Ceres::PageDesign.Macros.LayoutContainer" as LayoutContainer %}
 {% block PageBody %}
     <input type="hidden" id="currency-input" value="{{ currency }}"/>
     <div class="container-max">
@@ -90,7 +89,18 @@
 
                         {% endautoescape %}
                     </label>
-                    {{ LayoutContainer.show("Ceres::Checkout.OptIns") }}
+                    <label class="form-check-label" for="extraCheck">
+                        <input class="form-check-input" type="checkbox" value="" id="extraCheck" />
+                        {% autoescape false %}
+                            {% set urlContent %}<!--
+                                --><a href="{{ trans('checkoutExtraCheckboxes::template.checkbox1LinkUrl') }}" target="_blank">
+                                    <span>{{ trans("checkoutExtraCheckboxes::template.checkbox1LinkText", {"hyphen": "&shy;"}) }}</span>
+                                </a><!--
+                            -->{% endset %}
+                            
+                            {{ trans("checkoutExtraCheckboxes::template.checkbox1Text", { "url": urlContent}) }}
+                        {% endautoescape %}
+                    </label>
                 </div>
                 <div class="amz-border-box">
                     <div id="orderDetailsWr">
